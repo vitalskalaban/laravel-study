@@ -24,7 +24,7 @@
                             <a class="nav-link" href="{{ route('about') }}">О нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Контакты</a>
+                            <a class="nav-link" href="{{ route('contact_store') }}">Контакты</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled">Disabled</a>
@@ -33,7 +33,10 @@
                 </div>
             </div>
         </nav>
-        <main>@yield('content')</main>
+        <main>
+            @include('flash-messages')
+            @yield('content')
+        </main>
     </div>
 </body>
 </html>

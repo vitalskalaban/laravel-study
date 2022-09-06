@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
+use App\Http\Requests\CreateReportRequest;
+
 class MainController extends Controller
 {
     public function index()
