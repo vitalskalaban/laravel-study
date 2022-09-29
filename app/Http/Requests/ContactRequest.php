@@ -24,20 +24,20 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required', 'min:1',
-            'email'=> 'required', 'email:rfc',
-            'phone'=> 'required', 'phone:AUTO,US',
-            'text'=> 'required', 'min:1'
+            'name'=> ['required', 'min:1'],
+            'email'=> ['required', 'email:rfc'],
+            'phone'=> ['required', 'max:20'],
+            'text'=> ['required', 'min:1'],
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required'=> 'Поле имя является обязательным',
-            'email.required'=> 'Поле e-mail является обязательным',
-            'phone.required'=> 'Поле телефон является обязательным',
-            'text.required'=> 'Поле сообщение является обязательным'
-        ];
-    }
+//    public function messages()
+//    {
+//        return [
+//            'name.required'=> 'Поле имя является обязательным',
+//            'email.required'=> 'Поле e-mail является обязательным',
+//            'phone.required'=> 'Поле телефон является обязательным',
+//            'text.required'=> 'Поле сообщение является обязательным'
+//        ];
+//    }
 }
