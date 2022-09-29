@@ -24,7 +24,7 @@
                             <a class="nav-link" href="{{ route('about') }}">О нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact_store') }}">Контакты</a>
+                            <a class="nav-link" href="{{ route('show') }}">Контакты</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled">Disabled</a>
