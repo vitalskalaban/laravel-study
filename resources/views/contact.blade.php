@@ -7,24 +7,43 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Форма обратной связи</h4>
-                <form action="./mail.php" method="post">
-                    <div class="form-group col-md-4">
-                        <label for="name">Ваше имя:</label>
-                        <input type="name" name="name" class="form-control" id="name" placeholder="Name">
+                @if ($errors->any())
+                    <div class="alert alert-danger">Error!</div>
+                @endif
+                <form action="{{ route('contact_store') }}" method="post">
+                    @csrf
+                    <div class="form-group w-50">
+                        <label for="name">{{ __('validation.attributes.name') }}</label>
+                        <input value="{{ old('name') }}" name="name" type="text" class="form-control @error('name') is-invalid @enderror">
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="email1">E-mail:</label>
-                        <input type="email" name="email" class="form-control" id="email1" placeholder="Email">
+
+                    <div class="form-group w-50">
+                        <label for="email">{{ __('validation.attributes.email') }}</label>
+                        <input value="{{ old('email') }}" name="email" type="email" class="form-control @error('email') is-invalid @enderror">
+                        @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="phone">Номер телефона:</label>
-                        <input type="phone" name="phone" class="form-control" id="phone" placeholder="Phone">
+                    <div class="form-group w-50">
+                        <label for="phone">{{ __('validation.attributes.phone') }}</label>
+                        <input value="{{ old('phone') }}" name="phone" type="tel" class="form-control @error('phone') is-invalid @enderror">
+                        @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group col-md-4 mb-3">
-                        <label for="message">Сообщение:</label>
-                        <textarea class="form-control" name="message" rows="3"></textarea>
+                    <div class="form-group w-50">
+                        <label for="text">{{ __('validation.attributes.text') }}</label>
+                        <textarea name="text" rows="3"
+                                  class="form-control @error('text') is-invalid @enderror">{{ old('text') }}</textarea>
+                        @error('text')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <button type="submit" class="btn btn-info">Отправить сообщение</button>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
